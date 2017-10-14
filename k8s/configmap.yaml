@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-config
+  namespace: default
+data:
+  pg:
+    host: postgres
+    port: 5432
+    username: root
+    password: pwd
+    database: demo_prd
+  demo:
+    host: demo-app
+    port: 3000
+    RAILS_ENV: production
+    log_path: /tmp/
+
