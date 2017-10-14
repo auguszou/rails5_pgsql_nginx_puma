@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web-mysql
+  labels:
+    app: web
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: web
+        tier: pg
+    spec:
+      containers:
+      - image: postgres
+        name: pg
+        ports:
+        - containerPort: 5432
+          name: pg
+        volumeMounts:
+        - name: pg-persistent-storage
+          mountPath: /var/lib/postgres
+      volumes:
+      - name: pg-persistent-storage
+        persistentVolumeClaim:
+          claimName: pg-pvc

@@ -15,4 +15,3 @@ data:
     port: 3000
     RAILS_ENV: production
     log_path: /tmp/
-

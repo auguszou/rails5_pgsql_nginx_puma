@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: web
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: web
+        tier: frontend
+    spec:
+      containers:
+      - image: zouqilin/rails5_web:current
+        name: web
+        ports:
+        - containerPort: 80 
+          name: web
+        env:
+          - name: PG_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: demo-config
+                key: pg.host
+          - name: PG_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: demo-config
+                key: pg.port
+          - name: PG_DB
+            valueFrom:
+              configMapKeyRef:
+                name: demo-config
+                key: pg.database
+          - name: PG_USENAME
+            valueFrom:
+              configMapKeyRef:
+                name: demo-config
+                key: pg.username
+          - name: PG_PWD
+            valueFrom:
+              configMapKeyRef:
+                name: demo-config
+                key: pg.password
