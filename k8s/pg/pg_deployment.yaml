@@ -16,6 +16,12 @@ spec:
       containers:
       - image: postgres
         name: pg
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: demo-config
+              key: pg.password
         ports:
         - containerPort: 5432
           name: pg

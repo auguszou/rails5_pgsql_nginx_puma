@@ -5,11 +5,11 @@ metadata:
   namespace: default
 data:
   pg:
-    host: postgres
+    host: web-pg
     port: 5432
-    username: root
-    password: pwd
-    database: demo_prd
+    username: postgres
+    password: 123456
+    database: postgres
   demo:
     host: demo-app
     port: 3000
