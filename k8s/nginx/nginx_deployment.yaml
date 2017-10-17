@@ -19,3 +19,12 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
+      volumeMounts:
+      - name: nginx
+        mountPath: /etc/nginx
+      volumes:
+      - name: nginx
+        configMap:
+          name: demo-config
+          items:
+            - key: nginx.conf
