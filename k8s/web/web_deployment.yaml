@@ -18,7 +18,7 @@ spec:
       - image: zouqilin/rails5_web:current
         name: web
         ports:
-        - containerPort: 80 
+        - containerPort: 3000
           name: web
         env:
           - name: PG_HOST
